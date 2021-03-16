@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: train-schedule-deployment
+  labels:
+    app: train-schedule
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: train-schedule
+  template:
+    metadata:
+      labels:
+        app: train-schedule
+    spec:
+      containers:
+      - name: train-schedule
+        image: grocamador/train-schedule:latest
+        ports:
+        - containerPort: 8080
